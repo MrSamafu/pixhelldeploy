@@ -1,0 +1,6 @@
+- name: Déploiement de la stack Docker PixHellfest
+  hosts: ovh
+  become: true
+
+  roles:
+    - deploy
