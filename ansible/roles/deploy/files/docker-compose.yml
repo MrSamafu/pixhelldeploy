@@ -1,0 +1,32 @@
+services:
+  bdd:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789;
+      - MYSQL_DATABASE=pixhellfestdb
+      - MYSQL_USER=apipix
+      - MYSQL_PASSWORD=123456789;
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+  api:
+    image: apipix:v1.0
+    container_name: apipix
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=0.0.0.0
+      - DB_USER=apipix
+      - DB_PASSWORD=123456789;
+      - DB_NAME=pixhellfestdb
+      - SECRET_KEY=lespixelsvainqueront27220
+  front:
+    image: frontpix:v1.0
+    container_name: frontpix
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
