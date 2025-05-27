@@ -3,4 +3,4 @@ all:
     ovh:
       ansible_host: 141.95.159.41
       ansible_user: debian
-      ansible_ssh_private_key_file: /path/to/private/key
+      ansible_ssh_private_key_file: /path/to/private/key # Update with your actual private key path
