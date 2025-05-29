@@ -39,12 +39,12 @@
 
 - name: Copier le docker-compose.yml
   copy:
-    src: ../../docker-compose.yml
+    src: ../../../../docker-compose.yml
     dest: /var/www/pixhellfest/docker-compose.yml
 
 - name: Copier les Dockerfile
   copy:
-    src: "../../{{ item }}"
+    src: "../../../../{{ item }}"
     dest: /var/www/pixhellfest/
   loop:
     - Dockerfile.api
