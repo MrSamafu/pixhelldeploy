@@ -57,6 +57,7 @@
       dockerfile: "{{ item.dockerfile }}"
     name: "{{ item.image }}"
     tag: v1.0
+    source: build
   loop:
     - { dockerfile: "Dockerfile.api", image: "apipix" }
     - { dockerfile: "Dockerfile.front", image: "frontpix" }
