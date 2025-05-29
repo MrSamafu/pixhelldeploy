@@ -58,8 +58,8 @@
     name: "{{ item.image }}"
     tag: v1.0
   loop:
-    - { dockerfile: "Dockerfile.api", image: "apipix:v1.0" }
-    - { dockerfile: "Dockerfile.front", image: "frontpix:1.0" }
+    - { dockerfile: "Dockerfile.api", image: "apipix" }
+    - { dockerfile: "Dockerfile.front", image: "frontpix" }
 
 - name: Lancer les conteneurs via docker-compose
   community.docker.docker_compose_v2:
