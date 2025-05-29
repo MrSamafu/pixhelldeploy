@@ -62,6 +62,6 @@
     - { dockerfile: "Dockerfile.front", image: "frontpix:1.0" }
 
 - name: Lancer les conteneurs via docker-compose
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: /var/www/pixhellfest
     state: present
