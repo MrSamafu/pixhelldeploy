@@ -47,8 +47,8 @@
     src: "../../../{{ item }}"
     dest: /var/www/pixhellfest/
   loop:
-    - Dockerfile.api
-    - Dockerfile.front
+    - api.Dockerfile
+    - front.Dockerfile
 
 - name: Build Docker images
   community.docker.docker_image:
@@ -59,8 +59,8 @@
     tag: v1.0
     source: build
   loop:
-    - { dockerfile: "Dockerfile.api", image: "apipix" }
-    - { dockerfile: "Dockerfile.front", image: "frontpix" }
+    - { dockerfile: "api.Dockerfile", image: "apipix" }
+    - { dockerfile: "front.Dockerfile", image: "frontpix" }
 
 - name: Start containers with docker-compose
   community.docker.docker_compose_v2:
