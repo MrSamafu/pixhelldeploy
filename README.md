@@ -4,8 +4,7 @@ Deploy apipix and pixhellfestdb on server with ansible playbook
 # Backlog TODO
 
 ## Ansible
-- Translate every task name/description in english
-- The files used by an Ansible roles should be placed under the 'files' folder of the role: [check the doc](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
+- The files used by an Ansible roles should be placed under the 'files' folder of the role: [check the doc](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html) CHECK
 - Find a way to manage sensible values, ex: password
     - you could use ansible-vault
     - you can also generate a random password during deployment and write in a file on the server

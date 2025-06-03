@@ -1,4 +1,4 @@
-- name: Déploiement de la stack Docker PixHellfest
+- name: Docker PixHellfest stack deploy
   hosts: ovh
   become: true
 

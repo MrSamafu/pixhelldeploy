@@ -1,4 +1,4 @@
-- name: Installer les dépendances APT
+- name: Install APT dependencies
   apt:
     name:
       - apt-transport-https
@@ -9,19 +9,19 @@
     state: present
     update_cache: true
 
-- name: Ajouter la clé Docker
+- name: Add Docker key
   ansible.builtin.shell: |
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   args:
     creates: /usr/share/keyrings/docker-archive-keyring.gpg
 
-- name: Ajouter le dépôt Docker
+- name: Add Docker repository
   copy:
     content: |
       deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu focal stable
     dest: /etc/apt/sources.list.d/docker.list
 
-- name: Installer Docker et Docker Compose
+- name: Install Docker and Docker Compose
   apt:
     name:
       - docker-ce
@@ -31,26 +31,26 @@
     state: present
     update_cache: true
 
-- name: Créer le dossier de déploiement
+- name: Create deployment directory
   file:
     path: /var/www/pixhellfest
     state: directory
     mode: '0755'
 
-- name: Copier le docker-compose.yml
+- name: Copy docker-compose.yml
   copy:
-    src: ../../../../docker-compose.yml
+    src: ../../../docker-compose.yml
     dest: /var/www/pixhellfest/docker-compose.yml
 
-- name: Copier les Dockerfile
+- name: Copy Dockerfiles
   copy:
-    src: "../../../../{{ item }}"
+    src: "../../../{{ item }}"
     dest: /var/www/pixhellfest/
   loop:
     - Dockerfile.api
     - Dockerfile.front
 
-- name: Builder les images Docker
+- name: Build Docker images
   community.docker.docker_image:
     build:
       path: /var/www/pixhellfest
@@ -62,7 +62,7 @@
     - { dockerfile: "Dockerfile.api", image: "apipix" }
     - { dockerfile: "Dockerfile.front", image: "frontpix" }
 
-- name: Lancer les conteneurs via docker-compose
+- name: Start containers with docker-compose
   community.docker.docker_compose_v2:
     project_src: /var/www/pixhellfest
     state: present
