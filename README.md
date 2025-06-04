@@ -19,8 +19,6 @@ You need to have on the server:
 # Backlog TODO
 
 ## Ansible
-- Find a way to manage sensible values, ex: password
-    - you could use ansible-vault
 - Update the deployment to use a distant server if you can and be carefull with the management of the private key to connect
 
 

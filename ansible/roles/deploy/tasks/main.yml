@@ -42,13 +42,19 @@
     src: ../../../docker-compose.yml
     dest: /var/www/pixhellfest/docker-compose.yml
 
-- name: Copy Dockerfiles
+- name: Copy Dockerfiles and decrypted .env file
   copy:
     src: "../../../{{ item }}"
     dest: /var/www/pixhellfest/
   loop:
     - api.Dockerfile
     - front.Dockerfile
+    - .env
+
+- name: copy devcontainer.json
+  copy:
+    src: ../../../devcontainer.json
+    dest: /var/www/pixhellfest/.devcontainer/devcontainer.json
 
 - name: Build Docker images
   community.docker.docker_image:
