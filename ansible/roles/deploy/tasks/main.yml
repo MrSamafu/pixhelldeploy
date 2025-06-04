@@ -51,6 +51,12 @@
     - front.Dockerfile
     - .env
 
+- name: Create devcontainer directory
+  file:
+    path: /var/www/pixhellfest/.devcontainer
+    state: directory
+    mode: '0755'
+
 - name: copy devcontainer.json
   copy:
     src: ../../files/devcontainer.json
