@@ -1,5 +1,5 @@
 # pixhelldeploy
-Deploy apipix and pixhellfestdb on server with ansible playbook
+Deploy apipix and pixhellfestdb on server with ansible playbook and create the databases
 
 # Target server
 
@@ -14,13 +14,13 @@ You need to have on the server:
 - Port 22 open ( for ssh )
 - Every port in this app, so 3306,3000 and 5173 need to be openned
 - the sudo access
+- password for ansible-vault
 
 # Backlog TODO
 
 ## Ansible
 - Find a way to manage sensible values, ex: password
     - you could use ansible-vault
-    - you can also generate a random password during deployment and write in a file on the server
 - Update the deployment to use a distant server if you can and be carefull with the management of the private key to connect
 
 
