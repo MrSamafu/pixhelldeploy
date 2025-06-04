@@ -14,4 +14,4 @@ You need to have on the server:
 - Port 22 open ( for ssh )
 - Every port in this app, so 3306,3000 and 5173 need to be openned
 - the sudo access
-- password for ansible-vault (Ask to owner)
+- password for ansible-vault (Ask to owner) --ask-vault-password
